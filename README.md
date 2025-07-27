@@ -106,10 +106,6 @@ StudentRecordSystem/
 ## 🧑 Author
 
 **Selva Ganesh**  
-[LinkedIn](https://www.linkedin.com/) | [GitHub](https://github.com/)
+[LinkedIn](https://www.linkedin.com/in/selva-ganesh-v-offic/) | [GitHub](https://github.com/selvaganesh12a)
 
 ---
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
