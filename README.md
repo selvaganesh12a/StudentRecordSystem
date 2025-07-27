@@ -97,12 +97,6 @@ StudentRecordSystem/
 
 ---
 
-## 📷 Screenshots
-
-> *(Add any screenshots of Postman or frontend if available)*
-
----
-
 ## 🧑 Author
 
 **Selva Ganesh**  
