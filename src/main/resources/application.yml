@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: StudentRecordSystem
+  devtools:
+    restart:
+      enabled: 'true'
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  datasource:
+    url: jdbc:mysql://localhost:3306/dcbapp
+    username: root
+    password: '1234'
+    driver-class-name: com.mysql.jdbc.Driver
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
