@@ -1,0 +1,40 @@
+/* StudentForm.css */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  transition: border 0.2s ease;
+}
+
+input:focus {
+  border: 1px solid #1a73e8;
+  box-shadow: 0 0 3px rgba(26, 115, 232, 0.5);
+}
+
+button[type="submit"] {
+  background: #1a73e8;
+  color: white;
+  font-weight: 500;
+}
+
+button[type="button"] {
+  background: #f1f3f4;
+}
+
+button:hover {
+  opacity: 0.9;
+}
