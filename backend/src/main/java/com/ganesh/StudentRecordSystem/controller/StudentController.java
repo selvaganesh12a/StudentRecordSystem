@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class StudentController {
 
     @Autowired
     private StudentService studentService;
 
     @PostMapping("/storeStudents")
-    public Student saveStudent(@Valid @RequestBody Student student){
+    public Student saveStudent(@RequestBody Student student){
         return studentService.storeStudent(student);
     }
 
@@ -30,7 +31,7 @@ public class StudentController {
         return studentService.fetchStudentById(studentId);
     }
 
-    @DeleteMapping("/deleteStudents/{id}")
+    @DeleteMapping("/deleteStudent/{id}")
     public String deleteStudentById(@PathVariable("id") Long studentId){
         studentService.deleteStudentById(studentId);
         return "Student deleted Successfully";

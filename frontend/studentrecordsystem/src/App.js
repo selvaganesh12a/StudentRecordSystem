@@ -1,48 +1,32 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect, use } from "react";
 import StudentList from "./components/StudentList";
 import StudentForm from "./components/StudentForm";
 import Navbar from "./components/Navbar";
+import { addStudent, getAllstudents } from "./services/studentService";
 
 function App() {
-  const [students, setStudents] = useState([
-    {
-      id: 1,
-      name: "John Doe",
-      age: "20",
-      phone: "123-456-7890",
-      native: "USA",
-      course: "Computer Science",
-      email: "johndoe@demo.com",
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      age: "22",
-      phone: "987-654-3210",
-      native: "Canada",
-      course: "Mathematics",
-      email: "janesmith@demo.com",
-    },
-    {
-      id: 3,
-      name: "Alice Johnson",
-      age: "21",
-      phone: "555-555-5555",
-      native: "UK",
-      course: "Physics",
-      email: "alicejohnson@demo.com",
-    },
-  ]);
+  const [students, setStudents] = useState([]);
   const [mode, setMode] = useState("view");
   const [editingStudent, setEditingStudent] = useState(null);
 
+  useEffect(() => {
+    getAllstudents()
+      .then((response) => {
+        setStudents(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching students:", error);
+      });
+  }, []);
+
   function handleAddStudent(newStudent) {
-    const studentWithId = {
-      ...newStudent,
-      id: students.length > 0 ? students[students.length - 1].id + 1 : 1,
-    };
-    setStudents([...students, studentWithId]);
+    addStudent(newStudent)
+      .then(() => getAllstudents())
+      .then((response) => {
+        setStudents(response.data);
+      });
     setMode("view");
   }
 

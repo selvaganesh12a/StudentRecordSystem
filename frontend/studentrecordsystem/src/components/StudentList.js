@@ -17,10 +17,10 @@ function StudentList(props) {
       <tbody>
         {props.students.map((student) => (
           <tr key={student.id}>
-            <td>{student.id}</td>
-            <td>{student.name}</td>
+            <td>{student.studentId}</td>
+            <td>{student.studentName}</td>
             <td>{student.age}</td>
-            <td>{student.phone}</td>
+            <td>{student.phoneNumber}</td>
             <td>{student.native}</td>
             <td>{student.course}</td>
             <td>{student.email}</td>
