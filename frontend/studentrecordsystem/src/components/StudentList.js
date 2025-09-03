@@ -15,9 +15,9 @@ function StudentList(props) {
         </tr>
       </thead>
       <tbody>
-        {props.students.map((student) => (
+        {props.students.map((student,index) => (
           <tr key={student.id}>
-            <td>{student.id}</td>
+            <td>{index+1}</td>
             <td>{student.name}</td>
             <td>{student.age}</td>
             <td>{student.phone}</td>

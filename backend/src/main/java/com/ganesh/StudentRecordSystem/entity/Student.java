@@ -16,8 +16,7 @@ public class Student {
     @Id
     @SequenceGenerator(
             name = "generator",
-            sequenceName = "sequencegenerator",
-            allocationSize = 1
+            sequenceName = "sequencegenerator"
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
