@@ -25,15 +25,15 @@ class StudentServiceTest {
     void setUp() {
         Student student =
                 Student.builder()
-                        .studentName("Selva Ganesh")
-                        .StudentId(1L)
+                        .name("Selva Ganesh")
+                        .id(1L)
                         .age("21")
                         .email("selvaganesh@gmail.com")
                         .course("IT")
-                        .Native("Thoothukudi")
-                        .PhoneNumber("9876543210")
+                        .nativePlace("Thoothukudi")
+                        .phone("9876543210")
                         .build();
-        Mockito.when(studentRepository.findByStudentNameIgnoreCase("Selva Ganesh"))
+        Mockito.when(studentRepository.findByNameIgnoreCase("Selva Ganesh"))
                 .thenReturn(student);
     }
 
@@ -43,6 +43,6 @@ class StudentServiceTest {
         String studentName = "Selva Ganesh";
         Student found =
                 studentService.fetchStudentByName(studentName);
-        assertEquals(studentName,found.getStudentName());
+        assertEquals(studentName,found.getName());
     }
 }

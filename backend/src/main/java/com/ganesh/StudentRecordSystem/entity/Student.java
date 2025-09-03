@@ -1,9 +1,6 @@
 package com.ganesh.StudentRecordSystem.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,15 +14,22 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long StudentId;
+    @SequenceGenerator(
+            name = "generator",
+            sequenceName = "sequencegenerator",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "sequencegenerator")
+    private Long id;
 
     @NotBlank(message = "Add Student Name")
-    private String studentName;
+    private String name;
 
     private String age;
-    private String PhoneNumber;
-    private String Native;
+    private String phone;
+    private String nativePlace;
     private String course;
     private String email;
 }

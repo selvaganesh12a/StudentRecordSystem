@@ -46,19 +46,19 @@ public class StudentServiceImpl implements StudentService{
     public Student updateStudent(Long studentId, Student student) {
         Student stDB = studentRepository.findById(studentId).get();
 
-        if(Objects.nonNull(student.getStudentName()) &&
-        !"".equalsIgnoreCase(student.getStudentName())){
-            stDB.setStudentName(student.getStudentName());
+        if(Objects.nonNull(student.getName()) &&
+        !"".equalsIgnoreCase(student.getName())){
+            stDB.setName(student.getName());
         }
 
-        if(Objects.nonNull(student.getPhoneNumber()) &&
-                !"".equalsIgnoreCase(student.getPhoneNumber())){
-            stDB.setPhoneNumber(student.getPhoneNumber());
+        if(Objects.nonNull(student.getPhone()) &&
+                !"".equalsIgnoreCase(student.getPhone())){
+            stDB.setPhone(student.getPhone());
         }
 
-        if(Objects.nonNull(student.getNative()) &&
-                !"".equalsIgnoreCase(student.getNative())){
-            stDB.setNative(student.getNative());
+        if(Objects.nonNull(student.getNativePlace()) &&
+                !"".equalsIgnoreCase(student.getNativePlace())){
+            stDB.setNativePlace(student.getNativePlace());
         }
 
         if(Objects.nonNull(student.getAge()) &&
@@ -71,6 +71,6 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public Student fetchStudentByName(String studentName) {
-        return studentRepository.findByStudentNameIgnoreCase(studentName);
+        return studentRepository.findByNameIgnoreCase(studentName);
     }
 }

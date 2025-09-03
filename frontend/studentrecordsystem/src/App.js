@@ -3,7 +3,7 @@ import { useState, useEffect, use } from "react";
 import StudentList from "./components/StudentList";
 import StudentForm from "./components/StudentForm";
 import Navbar from "./components/Navbar";
-import { addStudent, getAllstudents } from "./services/studentService";
+import { addStudent, getAllstudents, deleteStudent, updateStudent } from "./services/studentService";
 
 function App() {
   const [students, setStudents] = useState([]);
@@ -36,19 +36,21 @@ function App() {
   }
 
   function handleUpdateStudent(updatedStudent) {
-    const updatedStudents = students.map((student) =>
-      student.id === updatedStudent.id ? updatedStudent : student
-    );
-    setStudents(updatedStudents);
+    updateStudent(updatedStudent.id, updatedStudent)
+      .then(() => getAllstudents())
+      .then((response) => setStudents(response.data))
+      .catch((error) => console.error("Update failed:", error));
     setMode("view");
     setEditingStudent(null);
   }
 
   function handleDeleteStudent(studentId) {
-    const updatedStudents = students.filter(
-      (student) => student.id !== studentId
-    );
-    setStudents(updatedStudents);
+    deleteStudent(studentId)
+      .then(() => getAllstudents())
+      .then((response) => {
+        setStudents(response.data);
+      });
+    setMode("view");
   }
 
   function handleCancel() {

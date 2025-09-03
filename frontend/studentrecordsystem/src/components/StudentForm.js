@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import "../styles/studentform.module.css";
 function StudentForm(props) {
   const [formData, setFormData] = useState({
-    StudentId: props.editingStudent ? props.editingStudent.StudentId : null,
-    studentName: props.editingStudent ? props.editingStudent.studentName : "",
+    id: props.editingStudent ? props.editingStudent.id : null,
+    name: props.editingStudent ? props.editingStudent.name : "",
     age: props.editingStudent ? props.editingStudent.age : "",
-    PhoneNumber: props.editingStudent ? props.editingStudent.PhoneNumber : "",
-    Native: props.editingStudent ? props.editingStudent.Native : "",
+    phone: props.editingStudent ? props.editingStudent.phone : "",
+    nativePlace: props.editingStudent ? props.editingStudent.nativePlace : "",
     course: props.editingStudent ? props.editingStudent.course : "",
     email: props.editingStudent ? props.editingStudent.email : "",
   });
@@ -38,8 +38,8 @@ function StudentForm(props) {
       <label htmlFor="name">Name : </label>
       <input
         type="text"
-        name="studentName"
-        value={formData.studentName}
+        name="name"
+        value={formData.name}
         onChange={handleChange}
       />
       <br />
@@ -54,16 +54,16 @@ function StudentForm(props) {
       <label htmlFor="phone">Phone Number : </label>
       <input
         type="text"
-        name="PhoneNumber"
-        value={formData.PhoneNumber}
+        name="phone"
+        value={formData.phone}
         onChange={handleChange}
       />
       <br />
       <label htmlFor="native">Native : </label>
       <input
         type="text"
-        name="Native"
-        value={formData.Native}
+        name="nativePlace"
+        value={formData.nativePlace}
         onChange={handleChange}
       />
       <br />

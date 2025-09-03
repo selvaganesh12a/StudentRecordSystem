@@ -7,7 +7,7 @@ function StudentList(props) {
           <th>Id</th>
           <th>Name</th>
           <th>Age</th>
-          <th>Phone Number</th>
+          <th>Phone</th>
           <th>Native</th>
           <th>Course</th>
           <th>Email</th>
@@ -17,11 +17,11 @@ function StudentList(props) {
       <tbody>
         {props.students.map((student) => (
           <tr key={student.id}>
-            <td>{student.studentId}</td>
-            <td>{student.studentName}</td>
+            <td>{student.id}</td>
+            <td>{student.name}</td>
             <td>{student.age}</td>
-            <td>{student.phoneNumber}</td>
-            <td>{student.native}</td>
+            <td>{student.phone}</td>
+            <td>{student.nativePlace}</td>
             <td>{student.course}</td>
             <td>{student.email}</td>
             <td>

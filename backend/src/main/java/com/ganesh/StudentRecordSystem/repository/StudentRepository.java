@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
-    public Student findByStudentName(String studentName);
+    public Student findByName(String studentName);
 
-    public Student findByStudentNameIgnoreCase(String studentName);
+    public Student findByNameIgnoreCase(String studentName);
 }
