@@ -4,7 +4,7 @@ const API_URL = "http://localhost:8080";
 
 export const getAllstudents = () => axios.get(`${API_URL}/getStudents`);
 
-export const getStudentById = (id) => axios.get(`${API_URL}/getStudent/${id}`);
+export const getStudentById = (id) => axios.get(`${API_URL}/getStudents/${id}`);
 
 export const addStudent = (student) =>
   axios.post(`${API_URL}/storeStudents`, student);

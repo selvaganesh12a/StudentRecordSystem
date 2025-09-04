@@ -3,12 +3,17 @@ import { useState, useEffect, use } from "react";
 import StudentList from "./components/StudentList";
 import StudentForm from "./components/StudentForm";
 import Navbar from "./components/Navbar";
-import { addStudent, getAllstudents, deleteStudent, updateStudent } from "./services/studentService";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import {
+  addStudent,
+  getAllstudents,
+  deleteStudent,
+  updateStudent,
+} from "./services/studentService";
 
 function App() {
   const [students, setStudents] = useState([]);
-  const [mode, setMode] = useState("view");
-  const [editingStudent, setEditingStudent] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getAllstudents()
@@ -21,79 +26,53 @@ function App() {
       });
   }, []);
 
-  function handleAddStudent(newStudent) {
-    addStudent(newStudent)
-      .then(() => getAllstudents())
-      .then((response) => {
-        setStudents(response.data);
-      });
-    setMode("view");
-  }
-
-  function handleEditStudent(student) {
-    setEditingStudent(student);
-    setMode("edit");
-  }
-
-  function handleUpdateStudent(updatedStudent) {
-    updateStudent(updatedStudent.id, updatedStudent)
-      .then(() => getAllstudents())
-      .then((response) => setStudents(response.data))
-      .catch((error) => console.error("Update failed:", error));
-    setMode("view");
-    setEditingStudent(null);
-  }
-
   function handleDeleteStudent(studentId) {
     deleteStudent(studentId)
       .then(() => getAllstudents())
       .then((response) => {
         setStudents(response.data);
       });
-    setMode("view");
-  }
-
-  function handleCancel() {
-    setEditingStudent(null);
-    setMode("view");
   }
 
   return (
     <div className="App">
-      <Navbar setMode={setMode} />
-      {mode === "view" ? (
-        <StudentList
-          students={students}
-          handleEditStudent={handleEditStudent}
-          handleDeleteStudent={handleDeleteStudent}
+      <Navbar />
+      <Routes>
+        <Route
+          path="/"
+          element={<h1>Welcome to Student Management System</h1>}
         />
-      ) : mode === "add" ? (
-        <StudentForm
-          mode={mode}
-          handleAddStudent={handleAddStudent}
-          handleCancel={handleCancel}
+        <Route
+          path="/studentlist"
+          element={
+            <StudentList
+              students={students}
+              handleDeleteStudent={handleDeleteStudent}
+            />
+          }
         />
-      ) : mode === "edit" ? (
-        <StudentForm
-          mode={mode}
-          editingStudent={editingStudent}
-          handleUpdateStudent={handleUpdateStudent}
-          handleCancel={handleCancel}
+        <Route
+          path="/addstudent"
+          element={
+            <StudentForm
+              mode="add"
+              setStudents={setStudents}
+            />
+          }
         />
-      ) : null}
+        <Route
+          path="/editstudent/:id"
+          element={
+            <StudentForm
+              mode="edit"
+              students={students}
+              setStudents={setStudents}
+            />
+          }
+        />
+      </Routes>
     </div>
   );
 }
 
 export default App;
-
-// Student object shape:
-// {
-//   id: number,
-//   name: string,
-//   age: string,
-//   phone: string,
-//   native: string,
-//   course: string,
-//   email: string
-// }
